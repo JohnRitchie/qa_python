@@ -21,5 +21,9 @@ class TestBooksCollector:
         # словарь books_rating, который нам возвращает метод get_books_rating, имеет длину 2
         assert len(collector.get_books_rating()) == 2
 
-    # напиши свои тесты ниже
-    # чтобы тесты были независимыми в каждом из них создавай отдельный экземпляр класса BooksCollector()
+    def test_add_new_book_add_two_same_books_without_error(self):
+        collector = BooksCollector()
+        collector.add_new_book('Гордость и предубеждение и зомби')
+        collector.add_new_book('Гордость и предубеждение и зомби')
+
+        assert len(collector.get_books_rating()) == 1
