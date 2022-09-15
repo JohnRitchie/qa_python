@@ -20,3 +20,20 @@ class TestBooksCollector:
         collector.set_book_rating(name, rating)
 
         assert collector.get_book_rating(name) == rating
+
+    def test_set_book_rating_nonexistent_book_return_none(self, collector):
+        name = 'Гордость и предубеждение и зомби'
+        rating = 5
+
+        collector.set_book_rating(name, rating)
+
+        assert collector.get_book_rating(name) is None
+
+    def test_set_book_rating_wrong_rating_return_one(self, collector):
+        name = 'Гордость и предубеждение и зомби'
+        rating = 55
+
+        collector.add_new_book(name)
+        collector.set_book_rating(name, rating)
+
+        assert collector.get_book_rating(name) == 1
