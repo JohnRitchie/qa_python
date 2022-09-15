@@ -29,3 +29,13 @@ class TestBooksCollector:
         collector.add_new_book(same_name)
 
         assert len(collector.get_books_rating()) == 1
+
+    def test_set_book_rating(self):
+        name = 'Гордость и предубеждение и зомби'
+        rating = 5
+
+        collector = BooksCollector()
+        collector.add_new_book(name)
+        collector.set_book_rating(name, rating)
+
+        assert collector.get_book_rating(name) == rating
