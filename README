@@ -1,0 +1,8 @@
+----------- coverage: platform win32, python 3.7.9-final-0 -----------
+Name          Stmts   Miss  Cover
+---------------------------------
+conftest.py       5      0   100%
+main.py          30      0   100%
+tests.py         87      0   100%
+---------------------------------
+TOTAL           122      0   100%
