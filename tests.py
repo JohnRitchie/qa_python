@@ -1,18 +1,18 @@
 class TestBooksCollector:
-    def test_add_new_book_add_two_books(self, collector):
+    def test_add_new_book_add_two_books_added_two_books(self, collector):
         collector.add_new_book('Гордость и предубеждение и зомби')
         collector.add_new_book('Что делать, если ваш кот хочет вас убить')
 
         assert len(collector.get_books_rating()) == 2
 
-    def test_add_new_book_add_two_same_books_without_error(self, collector):
+    def test_add_new_book_add_two_same_books_added_one_book(self, collector):
         same_name = 'Гордость и предубеждение и зомби'
         collector.add_new_book(same_name)
         collector.add_new_book(same_name)
 
         assert len(collector.get_books_rating()) == 1
 
-    def test_set_book_rating(self, collector):
+    def test_set_book_rating_add_book_with_rating_added_correct_rating(self, collector):
         name = 'Гордость и предубеждение и зомби'
         rating = 5
 
@@ -21,7 +21,7 @@ class TestBooksCollector:
 
         assert collector.get_book_rating(name) == rating
 
-    def test_set_book_rating_nonexistent_book_return_none(self, collector):
+    def test_set_book_rating_add_nonexistent_book_return_none_rating(self, collector):
         name = 'Гордость и предубеждение и зомби'
         rating = 5
 
@@ -29,7 +29,7 @@ class TestBooksCollector:
 
         assert collector.get_book_rating(name) is None
 
-    def test_set_book_rating_wrong_rating_return_one(self, collector):
+    def test_set_book_rating_add_wrong_rating_return_one(self, collector):
         name = 'Гордость и предубеждение и зомби'
         rating = 55
 
@@ -38,7 +38,7 @@ class TestBooksCollector:
 
         assert collector.get_book_rating(name) == 1
 
-    def test_get_book_rating(self, collector):
+    def test_get_book_rating_add_book_with_rating_return_correct_rating(self, collector):
         """
         this method is tested in other tests (f.e. test_set_book_rating), but I have to follow the rules of the task
         """
@@ -50,7 +50,7 @@ class TestBooksCollector:
 
         assert collector.get_book_rating(name) == rating
 
-    def test_get_books_with_specific_rating(self, collector):
+    def test_get_books_with_specific_rating_add_book_with_rating_return_correct_rating(self, collector):
         name = 'Гордость и предубеждение и зомби'
         rating = 5
 
@@ -59,7 +59,7 @@ class TestBooksCollector:
 
         assert collector.get_books_with_specific_rating(rating) == [name]
 
-    def test_get_books_with_specific_rating_nonexistent_book_return_empty_list(self, collector):
+    def test_get_books_with_specific_rating_add_nonexistent_book_return_empty_list(self, collector):
         name = 'Гордость и предубеждение и зомби'
         rating = 5
 
@@ -67,7 +67,7 @@ class TestBooksCollector:
 
         assert collector.get_books_with_specific_rating(rating) == []
 
-    def test_get_books_with_specific_rating_wrong_rating_return_empty_list(self, collector):
+    def test_get_books_with_specific_rating_add_wrong_rating_return_empty_list(self, collector):
         name = 'Гордость и предубеждение и зомби'
         rating = 55
 
@@ -76,7 +76,7 @@ class TestBooksCollector:
 
         assert collector.get_books_with_specific_rating(rating) == []
 
-    def test_get_books_with_specific_rating_nonexistent_rating_return_empty_list(self, collector):
+    def test_get_books_with_specific_rating_add_nonexistent_rating_return_empty_list(self, collector):
         name = 'Гордость и предубеждение и зомби'
         rating = 6
         nonexistent_rating = 5
@@ -86,7 +86,7 @@ class TestBooksCollector:
 
         assert collector.get_books_with_specific_rating(nonexistent_rating) == []
 
-    def test_get_books_rating(self, collector):
+    def test_get_books_rating_add_two_books_return_two_ratings(self, collector):
         """
         this method is tested in other tests (f.e. test_add_new_book_add_two_books),
         but I have to follow the rules of the task
@@ -96,7 +96,7 @@ class TestBooksCollector:
 
         assert len(collector.get_books_rating()) == 2
 
-    def test_add_book_in_favorites(self, collector):
+    def test_add_book_in_favorites_add_book_added_in_favorites(self, collector):
         name = 'Гордость и предубеждение и зомби'
 
         collector.add_new_book(name)
@@ -104,14 +104,14 @@ class TestBooksCollector:
 
         assert collector.get_list_of_favorites_books() == [name]
 
-    def test_add_book_in_favorites_nonexistent_book_return_empty_list(self, collector):
+    def test_add_book_in_favorites_add_nonexistent_book_return_empty_list(self, collector):
         name = 'Гордость и предубеждение и зомби'
 
         collector.add_book_in_favorites(name)
 
         assert collector.get_list_of_favorites_books() == []
 
-    def test_add_book_in_favorites_add_two_same_books_without_error(self, collector):
+    def test_add_book_in_favorites_add_two_same_books_added_one_book(self, collector):
         name = 'Гордость и предубеждение и зомби'
 
         collector.add_new_book(name)
@@ -120,7 +120,7 @@ class TestBooksCollector:
 
         assert collector.get_list_of_favorites_books() == [name]
 
-    def test_delete_book_from_favorites(self, collector):
+    def test_delete_book_from_favorites_delete_book_deleted(self, collector):
         name = 'Гордость и предубеждение и зомби'
 
         collector.add_new_book(name)
@@ -129,7 +129,7 @@ class TestBooksCollector:
 
         assert collector.get_list_of_favorites_books() == []
 
-    def test_get_list_of_favorites_books(self, collector):
+    def test_get_list_of_favorites_books_add_book_added_in_favorites(self, collector):
         """
         this method is tested in other tests (f.e. test_add_book_in_favorites),
         but I have to follow the rules of the task
