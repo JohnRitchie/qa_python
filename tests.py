@@ -128,3 +128,15 @@ class TestBooksCollector:
         collector.delete_book_from_favorites(name)
 
         assert collector.get_list_of_favorites_books() == []
+
+    def test_get_list_of_favorites_books(self, collector):
+        """
+        this method is tested in other tests (f.e. test_add_book_in_favorites),
+        but I have to follow the rules of the task
+        """
+        name = 'Гордость и предубеждение и зомби'
+
+        collector.add_new_book(name)
+        collector.add_book_in_favorites(name)
+
+        assert collector.get_list_of_favorites_books() == [name]
