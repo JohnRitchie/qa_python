@@ -85,3 +85,13 @@ class TestBooksCollector:
         collector.set_book_rating(name, rating)
 
         assert collector.get_books_with_specific_rating(nonexistent_rating) == []
+
+    def test_get_books_rating(self, collector):
+        """
+        this method is tested in other tests (f.e. test_add_new_book_add_two_books),
+        but I have to follow the rules of the task
+        """
+        collector.add_new_book('Гордость и предубеждение и зомби')
+        collector.add_new_book('Что делать, если ваш кот хочет вас убить')
+
+        assert len(collector.get_books_rating()) == 2
