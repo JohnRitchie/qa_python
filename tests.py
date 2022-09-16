@@ -49,3 +49,39 @@ class TestBooksCollector:
         collector.set_book_rating(name, rating)
 
         assert collector.get_book_rating(name) == rating
+
+    def test_get_books_with_specific_rating(self, collector):
+        name = 'Гордость и предубеждение и зомби'
+        rating = 5
+
+        collector.add_new_book(name)
+        collector.set_book_rating(name, rating)
+
+        assert collector.get_books_with_specific_rating(rating) == [name]
+
+    def test_get_books_with_specific_rating_nonexistent_book_return_empty_list(self, collector):
+        name = 'Гордость и предубеждение и зомби'
+        rating = 5
+
+        collector.set_book_rating(name, rating)
+
+        assert collector.get_books_with_specific_rating(rating) == []
+
+    def test_get_books_with_specific_rating_wrong_rating_return_empty_list(self, collector):
+        name = 'Гордость и предубеждение и зомби'
+        rating = 55
+
+        collector.add_new_book(name)
+        collector.set_book_rating(name, rating)
+
+        assert collector.get_books_with_specific_rating(rating) == []
+
+    def test_get_books_with_specific_rating_nonexistent_rating_return_empty_list(self, collector):
+        name = 'Гордость и предубеждение и зомби'
+        rating = 6
+        nonexistent_rating = 5
+
+        collector.add_new_book(name)
+        collector.set_book_rating(name, rating)
+
+        assert collector.get_books_with_specific_rating(nonexistent_rating) == []
