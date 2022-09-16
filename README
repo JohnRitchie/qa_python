@@ -1,3 +1,6 @@
+Unittests of BooksCollector.
+Covered 100%:
+
 ----------- coverage: platform win32, python 3.7.9-final-0 -----------
 Name          Stmts   Miss  Cover
 ---------------------------------
@@ -6,3 +9,48 @@ main.py          30      0   100%
 tests.py         87      0   100%
 ---------------------------------
 TOTAL           122      0   100%
+
+Tested methods:
+add_new_book:
+    positive:
+        test_add_new_book_add_two_books_added_two_books
+    negative:
+        test_add_new_book_add_two_same_books_added_one_book
+
+set_book_rating:
+    positive:
+        test_set_book_rating_add_book_with_rating_added_correct_rating
+    negative:
+        test_set_book_rating_add_nonexistent_book_return_none_rating
+        test_set_book_rating_add_wrong_rating_return_one
+
+get_book_rating:
+    positive:
+        test_get_book_rating_add_book_with_rating_return_correct_rating
+
+get_books_with_specific_rating:
+    positive:
+        test_get_books_with_specific_rating_add_book_with_rating_return_correct_rating
+    negative:
+        test_get_books_with_specific_rating_add_nonexistent_book_return_empty_list
+        test_get_books_with_specific_rating_add_wrong_rating_return_empty_list
+        test_get_books_with_specific_rating_add_nonexistent_rating_return_empty_list
+
+get_books_rating:
+    positive:
+        test_get_books_rating_add_two_books_return_two_ratings
+
+add_book_in_favorites:
+    positive:
+        test_add_book_in_favorites_add_book_added_in_favorites
+    negative:
+        test_add_book_in_favorites_add_nonexistent_book_return_empty_list
+        test_add_book_in_favorites_add_two_same_books_added_one_book
+
+delete_book_from_favorites:
+    positive:
+        test_delete_book_from_favorites_delete_book_deleted
+
+get_list_of_favorites:
+    positive:
+        test_get_list_of_favorites_books_add_book_added_in_favorites
