@@ -119,3 +119,12 @@ class TestBooksCollector:
         collector.add_book_in_favorites(name)
 
         assert collector.get_list_of_favorites_books() == [name]
+
+    def test_delete_book_from_favorites(self, collector):
+        name = 'Гордость и предубеждение и зомби'
+
+        collector.add_new_book(name)
+        collector.add_book_in_favorites(name)
+        collector.delete_book_from_favorites(name)
+
+        assert collector.get_list_of_favorites_books() == []
