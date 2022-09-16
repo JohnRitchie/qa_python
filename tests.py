@@ -95,3 +95,27 @@ class TestBooksCollector:
         collector.add_new_book('Что делать, если ваш кот хочет вас убить')
 
         assert len(collector.get_books_rating()) == 2
+
+    def test_add_book_in_favorites(self, collector):
+        name = 'Гордость и предубеждение и зомби'
+
+        collector.add_new_book(name)
+        collector.add_book_in_favorites(name)
+
+        assert collector.get_list_of_favorites_books() == [name]
+
+    def test_add_book_in_favorites_nonexistent_book_return_empty_list(self, collector):
+        name = 'Гордость и предубеждение и зомби'
+
+        collector.add_book_in_favorites(name)
+
+        assert collector.get_list_of_favorites_books() == []
+
+    def test_add_book_in_favorites_add_two_same_books_without_error(self, collector):
+        name = 'Гордость и предубеждение и зомби'
+
+        collector.add_new_book(name)
+        collector.add_book_in_favorites(name)
+        collector.add_book_in_favorites(name)
+
+        assert collector.get_list_of_favorites_books() == [name]
