@@ -37,3 +37,15 @@ class TestBooksCollector:
         collector.set_book_rating(name, rating)
 
         assert collector.get_book_rating(name) == 1
+
+    def test_get_book_rating(self, collector):
+        """
+        this method is tested in other tests (f.e. test_set_book_rating), but I have to follow the rules of the task
+        """
+        name = 'Гордость и предубеждение и зомби'
+        rating = 5
+
+        collector.add_new_book(name)
+        collector.set_book_rating(name, rating)
+
+        assert collector.get_book_rating(name) == rating
